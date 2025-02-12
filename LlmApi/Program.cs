@@ -4,6 +4,18 @@ using LLama.Common;
 using LLama.Abstractions;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// CORS-Konfiguration hinzufügen
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.WithOrigins("http://localhost:5002") // Neuer React Port
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -18,6 +30,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+// CORS vor den anderen Middleware-Komponenten aktivieren
+app.UseCors();
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
