@@ -1,0 +1,23 @@
+# LLM Modelle
+LlmApi/LLMs/
+**/LLMs/*.gguf
+
+# .NET Build-Verzeichnisse
+**/bin/
+**/obj/
+
+# VS Code Verzeichnis
+.vscode/
+
+# Visual Studio Dateien
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.vs/
+
+# Rider
+.idea/
+
+# macOS
+.DS_Store 
